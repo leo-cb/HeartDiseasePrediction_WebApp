@@ -1,6 +1,9 @@
 import pymongo
 import hashlib
 import secrets
+import os
+
+os.environ['ENVIRONMENT'] = 'testing'
 
 def generate_insert_api_key(url="mongodb://mongodb:27017",key=""):
     # generate random api key
@@ -26,8 +29,14 @@ def generate_insert_api_key(url="mongodb://mongodb:27017",key=""):
     else:
         return Exception("Failed to store the API key.")
     
-def check_api_key(api_key,url="mongodb://mongodb:27017"):
+MONGODB_DEFAULT_URL = "mongodb://mongodb:27017"
+
+def check_api_key(api_key,url=MONGODB_DEFAULT_URL):
     # hash the api key
+
+    if url == MONGODB_DEFAULT_URL and os.environ.get('ENVIRONMENT') == 'testing':
+            url = "mongodb://localhost:27017"
+
     hash_api_key = hashlib.sha256(api_key.encode()).hexdigest()
 
     # connect to the local mongodb

@@ -3,7 +3,11 @@ import pytest
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../app")))
 from main import app
+from db import generate_insert_api_key
+
+os.environ['ENVIRONMENT'] = 'testing'
 
 @pytest.fixture
 def client():
@@ -12,12 +16,14 @@ def client():
         yield client
 
 def test_predict_valid_request(client):
+    api_key = generate_insert_api_key(url="mongodb://localhost:27017")
+
     data = {
         "features": [i for i in range(9)],
         "features_names": ['cp', 'ca', 'thal', 'oldpeak', 'thalach', 'exang', 'age', 'slope', 'sex']
     }
     headers = {
-        "Authorization": "VjKq9czKVqvH1NsMHO-qrd-fiEyYMzyDoWTkXlp85Is"
+        "Authorization": api_key
     }
 
     response = client.post('/predict', json=data, headers=headers)
@@ -28,12 +34,14 @@ def test_predict_valid_request(client):
     assert "shap_values" in json_data
 
 def test_predict_invalid_request(client):
+    api_key = generate_insert_api_key(url="mongodb://localhost:27017")
+
     data = {
         "features": [1, 2, 3],
         "features_names": ["feat1", "feat2"]  # Mismatched feature names
     }
     headers = {
-        "Authorization": "VjKq9czKVqvH1NsMHO-qrd-fiEyYMzyDoWTkXlp85Is"
+        "Authorization": api_key
     }
 
     response = client.post('/predict', json=data, headers=headers)
@@ -48,7 +56,7 @@ def test_unauthorized_request(client):
         "features_names": ["feat1", "feat2", "feat3"]
     }
     headers = {
-        "Authorization": "VjKq9czKVqvH1NsMHO-qrd-fiEyYMzyDoWTkXlp85Ia"  # Unauthorized key
+        "Authorization": "invalid_api_key"  # Unauthorized key
     }
 
     response = client.post('/predict', json=data, headers=headers)
