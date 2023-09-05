@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:7.0.1-rc0-jammy
+    ports:
+      - "27017:27017"
