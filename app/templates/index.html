@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        {% if prediction_result %}
+        h2 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+        {% endif %}
+    </style>
+</head>
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <p>Insert the variable values for the patient (leave empty if not known):</p>
+    <form method="POST" action="/predict_http">
+        {{ form.hidden_tag() }}
+        
+        <label for="cp">Chest pain type (0-3)</label>
+        {{ form.cp(size=2) }}
+        <br>
+
+        <label for="ca">Number of major vessels (0-3)</label>
+        {{ form.ca(size=2) }}
+        <br>
+
+        <label for="thal">Heart defect type (1-3)</label>
+        {{ form.thal(size=2) }}
+        <br>
+
+        <label for="oldpeak">ST depression induced by exercise</label>
+        {{ form.oldpeak(size=2) }}
+        <br>
+
+        <label for="thalach">Maximum heart rate achieved</label>
+        {{ form.thalach(size=2) }}
+        <br>
+
+        <label for="exang">Exercise induced angina</label>
+        {{ form.exang }}
+        <br>
+
+        <label for="age">Age</label>
+        {{ form.age(size=2) }}
+        <br>
+
+        <label for="slope">Slope of peak ST segment</label>
+        {{ form.slope(size=2) }}
+        <br>
+
+        <label for="sex">Sex</label>
+        {{ form.sex }}
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if prediction_result %}
+    <h2>Prediction Result</h2>
+    <p>Prediction: {{ prediction_result.prediction }}</p>
+    <p>Confidence: {{ prediction_result.confidence }}</p>
+    <p>SHAP Values: {{ prediction_result.shap_values }}</p>
+    {% endif %}
+</body>
+</html>

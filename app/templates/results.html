@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        div {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+
+    <!-- Display the prediction result -->
+    <div>
+        <h2>Prediction:</h2>
+        <p>{{ response.prediction }}</p>
+        &nbsp;
+        <h2>Confidence:</h2>
+        <p>{{ response.confidence }}%</p>
+        &nbsp;
+        <h2>Importance (%) and effect (-/+) of patient's information:</h2>
+        <ul>
+            {% for feature, value in response.shap_values.items() %}
+            <li>{{ feature }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
