@@ -30,4 +30,4 @@ jobs:
           script: |
             cd /home/debian/heartdisease_webapp
             sudo docker-compose down -v --remove-orphans
-            sudo docker-compose up -d
+            sudo docker-compose up -d --build
