@@ -6,7 +6,7 @@ To install and run this web app, follow these steps:
 
 1. Clone this repository to your local machine:
    ```shell
-   git clone https://github.com/leo-cb/HeartDiseasePrediction_WebApp/HeartDiseasePrediction_WebApp.git
+   git clone https://github.com/leo-cb/HeartDiseasePrediction_WebApp.git
 2. Start the docker-compose service:
    ```shell
    docker-compose up -d
