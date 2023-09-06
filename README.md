@@ -12,6 +12,7 @@ To install and run this web app, follow these steps:
    docker-compose up -d
 
 Optionally:
+
 3. Check if the docker-compose container is running:
 ```shell
    docker-compose ps
