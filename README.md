@@ -46,7 +46,8 @@ Once the docker-compose container is running, you can access the application by 
 The application does the following:
 1. Loads the GBT binary classification model from a pickle file.
 2. Creates an endpoint /predict to serve API requests with a valid API key (stored in a MongoDB collection).
-3. Creates a web page index.html that allows the user to insert the variable values and submit them to get access to the output, shown in results.html.
+3. Library files to create API keys and insert the hashed key into the MongoDB collection, as well as checking if a given API key exists.
+4. Creates a web page index.html that allows the user to insert the variable values and submit them to get access to the output, shown in results.html.
 
 ## Continuous integration/Continuous deployment
 
