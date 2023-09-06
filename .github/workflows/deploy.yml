@@ -15,10 +15,8 @@ jobs:
 
       - name: Copy repo to server
         run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-          sshpass -p ${{ secrets.SERVER_PASSWORD }} scp -r . ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/debian
+          sshpass -p ${{ secrets.SERVER_PASSWORD }} scp -r $(pwd)/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/debian/heartdisease_webapp
 
       - name: Run docker-compose on server
         run: |
-          sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "cd /home/debian && sudo docker-compose up -d"
+          sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "cd /home/debian/heartdisease_webapp && sudo docker-compose up -d"
