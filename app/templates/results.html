@@ -60,7 +60,7 @@
         <h2>Confidence:</h2>
         <p>{{ response.confidence }}%</p>
         &nbsp;
-        <h2>Importance (%) and effect (-/+) of patient's information:</h2>
+        <h2>Importance (%) and effect on risk (-/+) of patient's information:</h2>
         <ul>
             {% for feature, value in response.shap_values.items() %}
             <li>{{ feature }}: {{ value }}</li>
