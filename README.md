@@ -6,7 +6,7 @@ To install and run this web app, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Start the docker-compose service
-   '''shell
+   ```shell
    docker-compose up -d
 
 # Usage
