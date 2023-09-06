@@ -1,5 +1,5 @@
 # HeartDiseasePrediction_WebApp
-Flask app that predicts the risk of heart disease based on a GBT ML model, and shows the confidence in the prediction as well as the factors behind the prediction (explainability).
+Flask app that predicts the risk of heart disease based on a Gradient-boosted Tree ML model, and shows the confidence in the prediction as well as the factors behind the prediction (explainability).
 
 # Installation
 To install and run this web app, follow these steps:
