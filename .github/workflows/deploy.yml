@@ -19,6 +19,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "."
           target: "/home/debian/heartdisease_webapp"
+          rm: true # remove target directory before copy
           exclude: ".git/**/*"
       - name: Run docker-compose on server
         uses: appleboy/ssh-action@master
