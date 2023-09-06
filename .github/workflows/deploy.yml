@@ -1,0 +1,33 @@
+name: CD - Deploy to Server
+on:
+  workflow_run:
+    workflows: ["CI - Tests and Linting"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Copy repo to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          source: "."
+          target: "/home/debian/heartdisease_webapp"
+          rm: true # remove target directory before copy
+          exclude: ".git/**/*"
+      - name: Run docker-compose on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            cd /home/debian/heartdisease_webapp
+            sudo docker-compose down -v --remove-orphans
+            sudo docker-compose up -d --build

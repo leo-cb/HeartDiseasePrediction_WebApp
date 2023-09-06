@@ -1,10 +1,14 @@
-name: Python application
+name: CI - Tests and Linting
 
 on:
   push:
-    branches: [ "dev" ]
+    branches:
+      - dev
+      - main
   pull_request:
-    branches: [ "dev" ]
+    branches:
+      - dev
+      - main
 
 permissions:
   contents: read

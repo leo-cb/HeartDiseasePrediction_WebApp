@@ -79,23 +79,24 @@
     <form method="POST" action="/predict_http">
         {{ form.hidden_tag() }}
         
-        <label for="cp">Chest pain type (0-3)</label>
+        <label for="cp">Chest pain type (0 - typical angina; 1 - atypical angina; 2 - non-anginal pain; 3 - asymptomatic)</label>
+
         {{ form.cp(size=2) }}
         <br>
 
-        <label for="ca">Number of major vessels (0-3)</label>
+        <label for="ca">Number of major vessels colored by flourosopy (0-3)</label>
         {{ form.ca(size=2) }}
         <br>
 
-        <label for="thal">Heart defect type (1-3)</label>
+        <label for="thal">Heart defect type (1 - normal; 2 - fixed defect; 3 - reversable defect)</label>
         {{ form.thal(size=2) }}
         <br>
 
-        <label for="oldpeak">ST depression induced by exercise</label>
+        <label for="oldpeak">ST depression induced by exercise relative to rest</label>
         {{ form.oldpeak(size=2) }}
         <br>
 
-        <label for="thalach">Maximum heart rate achieved</label>
+        <label for="thalach">Maximum heart rate achieved during intense exercise</label>
         {{ form.thalach(size=2) }}
         <br>
 
@@ -116,6 +117,8 @@
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <p>More information about the variables can be seen in the dataset's original source <a href="https://archive.ics.uci.edu/dataset/45/heart+disease">here</a>.</p>
 
     {% if prediction_result %}
     <h2>Prediction Result</h2>
