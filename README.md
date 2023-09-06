@@ -5,7 +5,10 @@ Flask app that predicts the risk of heart disease based on a GBT ML model, and s
 To install and run this web app, follow these steps:
 
 1. Clone this repository to your local machine:
-2. Start the docker-compose service: ```shell
+   ```shell
+   git clone [https://github.com/your-username/HeartDiseasePrediction_WebApp.git](https://github.com/leo-cb/HeartDiseasePrediction_WebApp.git)
+3. Start the docker-compose service:
+   ```shell
    docker-compose up -d
 
 # Usage
