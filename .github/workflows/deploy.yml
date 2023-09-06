@@ -15,7 +15,9 @@ jobs:
 
       - name: Copy repo to server
         run: |
-          sshpass -p ${{ secrets.SERVER_PASSWORD }} scp -r $(pwd) ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/debian/heartdisease_webapp
+          ping ${{ secrets.SERVER_HOST }}
+          ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+          sshpass -p ${{ secrets.SERVER_PASSWORD }} scp -r -v $(pwd)/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/debian/heartdisease_webapp
 
       - name: Run docker-compose on server
         run: |
