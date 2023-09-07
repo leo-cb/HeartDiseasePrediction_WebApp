@@ -66,6 +66,4 @@ The repository has a CI workflow in .github/workflows named **python-webapp.yml*
 
 ### CD workflow  
 
-The repository has a CD workflow in .github/workflows named **deploy.yml** that runs on a successful CI workflow run on the main branch. It deploys the application to a Debian-based host by ssh access, and runs the service.
-
-
+The repository has a CD workflow in .github/workflows named **deploy.yml** that runs on a successful CI workflow run on the main branch. It deploys the application to a Debian-based host by ssh access, and runs the docker containers.
