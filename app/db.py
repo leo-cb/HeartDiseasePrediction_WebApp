@@ -36,7 +36,7 @@ def check_api_key(api_key,url=MONGODB_DEFAULT_URL):
     # hash the api key
 
     if url == MONGODB_DEFAULT_URL and os.environ.get('ENVIRONMENT') == 'testing':
-            url = "mongodb://localhost:27017"
+        url = "mongodb://localhost:27017"
 
     hash_api_key = hashlib.sha256(api_key.encode()).hexdigest()
 
