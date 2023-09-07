@@ -4,6 +4,9 @@ import secrets
 import os
 
 os.environ['ENVIRONMENT'] = 'testing'
+MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
+MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
+MONGODB_DEFAULT_URL = f"mongodb://{MONGODB_USERNAME}:{MONGODB_PASSWORD}@mongodb:27017"
 
 def generate_insert_api_key(url="mongodb://mongodb:27017",key=""):
     # generate random api key
@@ -28,8 +31,6 @@ def generate_insert_api_key(url="mongodb://mongodb:27017",key=""):
         return api_key
     else:
         return Exception("Failed to store the API key.")
-    
-MONGODB_DEFAULT_URL = "mongodb://mongodb:27017"
 
 def check_api_key(api_key,url=MONGODB_DEFAULT_URL):
     # hash the api key
