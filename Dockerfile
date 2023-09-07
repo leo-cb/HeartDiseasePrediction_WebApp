@@ -9,7 +9,6 @@ RUN apt-get update
 
 # Copy files to container
 COPY . /app
-COPY requirements.txt .
 
 # Install the Python packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
