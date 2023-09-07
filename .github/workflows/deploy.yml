@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "."
-          target: "/home/debian/heartdisease_webapp"
+          target: "/home/${{ secrets.SERVER_USERNAME }}/heartdisease_webapp"
           rm: true # remove target directory before copy
       - name: Run docker-compose on server
         uses: appleboy/ssh-action@master
@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cd /home/debian/heartdisease_webapp
+            cd /home/${{ secrets.SERVER_USERNAME }}/heartdisease_webapp
             sudo docker-compose down
             sudo docker system prune -af
             sudo docker-compose up -d --build
