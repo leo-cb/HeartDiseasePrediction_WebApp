@@ -36,11 +36,28 @@ To install this application, follow these steps:
 
 1. Clone this repository to your local machine:
    ```shell
-   git clone https://github.com/leo-cb/HeartDiseasePrediction_WebApp.git  
-2. Start the docker-compose service:
+   git clone https://github.com/leo-cb/HeartDiseasePrediction_WebApp.git
+   ```
+   
+2. Set environment variables with MongoDB username and password:  
+
+   **Linux:**
+   ```shell
+   export MONGODB_USERNAME=<your_mongodb_username>
+   export MONGODB_PASSWORD=<your_mongodb_password>
+   ```
+  
+   **Windows:**
+   ```shell
+   set MONGODB_USERNAME=<your_mongodb_username>
+   set MONGODB_PASSWORD=<your_mongodb_password>
+   ```
+
+3. Start the docker-compose service:
    
    ```shell
    docker-compose up -d
+   ```
 
 ## Executing program
 
