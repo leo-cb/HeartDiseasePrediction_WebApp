@@ -2,9 +2,10 @@
 
 Flask app that predicts the risk of heart disease based on a Gradient-boosted Trees ML model created from this <a href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset">dataset</a>, and shows the confidence in the prediction as well as the factors behind the prediction (explainability). Synthetic data with null values and target=0 (no heart disease) was added to the dataset in order to correct a model bias for unknown variables.
 
-![Homepage](images/home.png)
-
-![Results](images/prediction.png)
+<div align="center">
+<img src="images/home.png" alt="Homepage" style="width: 75%;">
+<img src="images/prediction.png" alt="Results" style="width: 75%;">
+</div>
 
 # Getting Started
   
