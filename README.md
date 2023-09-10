@@ -61,7 +61,7 @@ To install this application, follow these steps:
 
 ## Executing program
 
-Once the docker-compose container is running, you can access the application by opening a web browser and navigating to http://localhost:5000. From there, you can enter patient data and receive a prediction of their likelihood of developing heart disease, as well as the confidence in that prediction and the each factor weight behind it.
+Once the docker-compose is up, you can access the application by opening a web browser and navigating to http://localhost:5000. From there, you can enter patient data and receive a prediction of their likelihood of developing heart disease, as well as the confidence in that prediction and the each factor weight behind it.
 
 # Description
 
