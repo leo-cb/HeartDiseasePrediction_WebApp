@@ -1,6 +1,8 @@
 # Heart Disease Prediction Web App
 
-Flask app that predicts the risk of heart disease based on a Gradient-boosted Trees ML model, and shows the confidence in the prediction as well as the factors behind the prediction (explainability). Data collected from this <a href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset">dataset</a>. EDA and model development code available in <a href="https://github.com/leo-cb/HeartDiseasePrediction_ModelDev">this repo</a>.
+Flask app that predicts the risk of heart disease based on a Gradient-boosted Trees ML model, and shows the confidence in the prediction as well as the factors behind the prediction (explainability). 
+
+Data collected from this <a href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset">dataset</a>. EDA and model development code available in <a href="https://github.com/leo-cb/HeartDiseasePrediction_ModelDev">this repo</a>.
 
 You can access a live website running the application <a href="http://149.56.100.90:5000/">here</a>.
 
