@@ -81,7 +81,7 @@ The application serves several key functions:
 
 ### CI workflow  
 
-The repository has a CI workflow in .github/workflows named **python-webapp.yml** that runs on every push and pull request on both main and dev branches. It runs linting and runs the tests in /tests/.
+The repository has a CI workflow in .github/workflows named **python-webapp.yml** that runs on every push request on both main and dev branches. It runs linting and runs the tests in /tests/.
 
 ### CD workflow  
 
